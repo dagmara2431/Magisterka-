@@ -1,0 +1,41 @@
+# Magisterka-
+Sub przyporzadkowanie()
+'
+' przyporzadkowanie Makro
+'
+Dim lRow As Long
+Dim rng As Range
+Dim Max As Double
+Dim b As Double
+Dim nrkol As Double
+Dim iCount As Long
+Dim i As Long
+Dim lp_zmian As Integer
+
+
+Set rng = Range("D1:D18")
+'Worksheet function MAX returns the largest value in a range
+
+Max = Application.WorksheetFunction.Max(rng)
+lRow = Application.WorksheetFunction.Match(Max, rng, 0)
+
+MsgBox Max
+MsgBox lRow
+
+
+If Max > 2700 Then
+lp_zmian = Max / 27000
+MsgBox lp_zmian
+i = 5
+b = lp_zmian + i
+For i = 5 To b
+        
+       Cells(6, i).Value = Max
+           
+Next i
+    
+End If
+
+'End Sub
+
+End Sub
