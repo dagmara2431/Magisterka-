@@ -1,5 +1,3 @@
-# Magisterka-
-
 Sub przyporzadkowanie()
 '
 ' przyporzadkowanie Makro
@@ -23,18 +21,21 @@ lRow = Application.WorksheetFunction.Match(Max, rng, 0)
 MsgBox Max
 MsgBox lRow
 
+If Max >= 2700 Then
 
-If Max > 2700 Then
 lp_zmian = Max / 27000
-MsgBox lp_zmian
-i = 5
 b = lp_zmian + i
-For i = 5 To b
-        
-       Cells(6, i).Value = Max
-           
+
+MsgBox lp_zmian & b
+
+For i = 1 To b
+        Cells(38, 2 * i).Value = 27000
+        Cells(38, 2 * b + 2).Value = Max - i * 27000
+        Cells(38, 2 * i - 1).Value = Cells(lRow, 1).Value
+        Cells(38, 2 * b + 1).Value = Cells(lRow, 1).Value
 Next i
-    
+ 
+
 End If
 
 'End Sub
