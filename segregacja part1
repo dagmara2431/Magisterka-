@@ -10,7 +10,11 @@ Dim nrkol As Double
 Dim iCount As Long
 Dim i As Long
 Dim lp_zmian As Integer
+Dim c As Integer
 
+Max = 1
+
+Do While Max > 0
 
 Set rng = Range("D1:D18")
 'Worksheet function MAX returns the largest value in a range
@@ -21,23 +25,30 @@ lRow = Application.WorksheetFunction.Match(Max, rng, 0)
 MsgBox Max
 MsgBox lRow
 
-If Max >= 2700 Then
+    If Max >= 2700 Then
+    i = 1
+    c = 0
+     lp_zmian = Max / 27000
+     b = lp_zmian + i
+        
+        MsgBox lp_zmian & b
+        
+            If c < 16 Then ' ilosc wykorzystanych zmian
+            c = c + b
+            
+                For b = 1 To c
+                        Cells(38, 2 * b).Value = 27000
+                        Cells(38, 2 * c + 2).Value = Max - i * 27000
+                        Cells(38, 2 * b - 1).Value = Cells(lRow, 1).Value
+                        Cells(38, 2 * c + 1).Value = Cells(lRow, 1).Value
+                Next b
+        
+            End If
+            
+        
+    End If
+     Cells(lRow, 4) = 0
 
-lp_zmian = Max / 27000
-b = lp_zmian + i
-
-MsgBox lp_zmian & b
-
-For i = 1 To b
-        Cells(38, 2 * i).Value = 27000
-        Cells(38, 2 * b + 2).Value = Max - i * 27000
-        Cells(38, 2 * i - 1).Value = Cells(lRow, 1).Value
-        Cells(38, 2 * b + 1).Value = Cells(lRow, 1).Value
-Next i
- 
-
-End If
-
-'End Sub
+Loop
 
 End Sub
